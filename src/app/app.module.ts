@@ -7,6 +7,8 @@ import { HeaderComponent } from './Components/header/header.component';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { HomeComponent } from './Components/home/home.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import { FormsModule } from '@angular/forms';
+import { ProductsComponent } from './Components/products/products.component';
 // class decorator
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { FooterComponent } from './Components/footer/footer.component';
     HeaderComponent,
     SidebarComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

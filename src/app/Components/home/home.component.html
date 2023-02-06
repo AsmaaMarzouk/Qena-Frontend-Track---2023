@@ -1,1 +1,39 @@
-<p>home works!</p>
+<!-- <p>home works!</p> -->
+<!-- Interpolation => {{}} -->
+<!-- <h1>{{helloVar}}</h1> -->
+<!-- <h1>{{sayHello()}}</h1> -->
+
+<!-- <p>{{store.name}}</p> -->
+
+<!-- <img src="{{store.coverImg}}" width="300" height="300"> -->
+
+<!-- <p>{{store.branches[0]}}</p>
+<p>{{store.branches[1]}}</p>
+<p>{{store.branches[2]}}</p> -->
+
+<!-- loop on element -->
+<!-- for of -->
+<!-- <ul>
+    <li *ngFor="let branch of store.branches">{{branch}}</li>
+</ul> -->
+
+
+<h2>{{dataClass.name}}</h2>
+
+<!-- <img src="{{dataClass.imgURL}}" width="300" height="300"> -->
+<img *ngIf="showImg" [src]="dataClass.imgURL" width="300" height="300">
+
+
+<ul>
+    <li *ngFor="let branchData of dataClass.branches">{{branchData}}</li>
+</ul>
+
+<!-- Event binding -->
+<button (click)="toggleImg()" class="btn btn-primary">Toggle Img</button>
+
+
+<!-- <input type="text" class="form-control" name="user" id="user" value="{{userFeedback}}"> -->
+<!-- <input type="text" class="form-control" name="user" id="user" [value]="userFeedback"> -->
+<input type="text" class="form-control" name="user" id="user" [(ngModel)]="userFeedback">
+{{userFeedback}}
+

@@ -1,0 +1,29 @@
+<!-- select -->
+<div>
+    <label for="cat">Select Category: </label>
+    <!-- two way binding => [(ngModel )] => value on form -->
+    <select name="cat" id="cat" [(ngModel)]="selectedCatID" class="form-control">
+        <option value="0">All</option>
+        <option *ngFor="let cat of catList" [value]="cat.id">{{cat.name}}</option>
+    </select>
+</div>
+<!-- <h1 class="bg-danger">For test selected option : {{selectedCatID}}</h1> -->
+
+
+<app-products [receivedCatID]="selectedCatID" (totalPriceChanged)="onTotalPrice($event)" ></app-products>
+
+
+<h1>Total Price in parent: {{receivedOrderTotalPrice}}</h1>
+
+
+<!-- ViewChild -->
+<!-- Case same component -->
+<!-- <div >
+    <label for="">User Name:</label>
+    <input type="text" class="form-control" name="user" id="user" #userName>
+
+</div> -->
+
+
+<!-- Deal another component using viewchild -->
+<button class="btn btn-primary" (click)="getArray()">Get Array Products</button>

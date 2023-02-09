@@ -6,6 +6,7 @@
       <th scope="col">Image</th>
       <th scope="col">Quantity</th>
       <th scope="col">Price</th>
+      <th>Count</th>
       <th>Buy</th>
     </tr>
   </thead>
@@ -29,40 +30,49 @@
     <!-- <tr *ngFor="let prd of prdList;let i=index"
      [ngClass]="{'bg-warning':prd.quantity==0,'text-danger':prd.quantity==0}"> -->
 
-     <!-- virtual containers -->
-     <!-- ng-container || ng-content  || ng-template -->
-     <ng-container *ngFor="let prd of prdList;let i=index">
-     <!-- <tr *ngIf="prd.quantity>0"> -->
-     <tr  [ngStyle]="{'background-color':(prd.quantity==0)?'lightyellow':'lightgray','color':(prd.quantity==0)?'red':'blue'}">
-      <!-- <td>{{prd.id}}</td> -->
-      <td>{{i+1}}</td>
-      <td>{{prd.name}}</td>
-      <td><img [src]="prd.imgURL" width="200" height="150"></td>
-      <!-- <td>{{prd.quantity}}</td> -->
-      <td>
-        <!-- <span *ngIf="prd.quantity>0">{{prd.quantity}}</span>
+    <!-- virtual containers -->
+    <!-- ng-container || ng-content  || ng-template -->
+    <!-- <ng-container *ngFor="let prd of prdList;let i=index"> -->
+    <!-- Day3 -->
+    <ng-container *ngFor="let prd of prdListOfCat;let i=index">
+      <!-- <tr *ngIf="prd.quantity>0"> -->
+      <tr
+        [ngStyle]="{'background-color':(prd.quantity==0)?'lightyellow':'lightgray','color':(prd.quantity==0)?'red':'blue'}">
+        <!-- <td>{{prd.id}}</td> -->
+        <td>{{i+1}}</td>
+        <td>{{prd.name}}</td>
+        <td><img [src]="prd.imgURL" width="200" height="150"></td>
+        <!-- <td>{{prd.quantity}}</td> -->
+        <td>
+          <!-- <span *ngIf="prd.quantity>0">{{prd.quantity}}</span>
         <span *ngIf="prd.quantity==0">out of stock</span> -->
 
-        <!-- #element => template reference -->
+          <!-- #element => template reference -->
 
-        <!-- <span *ngIf="prd.quantity>0;else outofstockElem">{{prd.quantity}}</span>
+          <!-- <span *ngIf="prd.quantity>0;else outofstockElem">{{prd.quantity}}</span>
         <ng-template #outofstockElem>Out Of Stock</ng-template> -->
 
-       <!-- <ng-container *ngIf="prd.quantity>0;else outofstockElem">{{prd.quantity}}</ng-container>
+          <!-- <ng-container *ngIf="prd.quantity>0;else outofstockElem">{{prd.quantity}}</ng-container>
         <ng-template #outofstockElem>Out Of Stock</ng-template> -->
 
-        <!-- switch(statement){case 1:  ; case 2:  ;} -->
-        <ng-container [ngSwitch]="prd.quantity">
+          <!-- switch(statement){case 1:  ; case 2:  ;} -->
+          <ng-container [ngSwitch]="prd.quantity">
             <ng-container *ngSwitchCase="0">Out Of Stock</ng-container>
             <ng-container *ngSwitchCase="1">Last one Item</ng-container>
             <ng-container *ngSwitchCase="2">Last 2 items</ng-container>
             <ng-container *ngSwitchDefault>{{prd.quantity}}</ng-container>
-        </ng-container>
-      </td>
-      <td>{{prd.price}}</td>
-      <!-- <td><button class="btn btn-success" [hidden]="prd.quantity==0">Buy</button></td> -->
-      <td><button class="btn btn-success" [disabled]="prd.quantity==0">Buy</button></td>
-    </tr>
-</ng-container>
+          </ng-container>
+        </td>
+        <td>{{prd.price}}</td>
+        <!-- <td><button class="btn btn-success" [hidden]="prd.quantity==0">Buy</button></td> -->
+        <!-- Day3 -->
+        <td><input type="number" class="form-control" #itemCount></td>
+        <td><button class="btn btn-success" [disabled]="prd.quantity==0" (click)="upadteTotalPrice(prd.price,itemCount.value)">Buy</button></td>
+      </tr>
+    </ng-container>
   </tbody>
 </table>
+
+
+<!-- test total price -->
+<!-- <h2 class="bg-danger">For test total price : {{orderTotalPrice}}</h2> -->

@@ -1,11 +1,12 @@
 <table class="table m-2">
   <thead>
-    <tr>
+    <tr class="bg-dark text-light">
       <th scope="col">No</th>
       <th scope="col">Name</th>
       <th scope="col">Image</th>
       <th scope="col">Quantity</th>
       <th scope="col">Price</th>
+      <th scope="col">Details</th>
       <th>Count</th>
       <th>Buy</th>
     </tr>
@@ -65,9 +66,16 @@
         </td>
         <td>{{prd.price}}</td>
         <!-- <td><button class="btn btn-success" [hidden]="prd.quantity==0">Buy</button></td> -->
+
+
+        <!-- Day4 -->
+        <td>
+          <button class="btn btn-dark" (click)="openPrdDetails(prd.id)">Details</button>
+        </td>
         <!-- Day3 -->
         <td><input type="number" class="form-control" #itemCount></td>
-        <td><button class="btn btn-success" [disabled]="prd.quantity==0" (click)="upadteTotalPrice(prd.price,itemCount.value)">Buy</button></td>
+        <td><button class="btn btn-success" [disabled]="prd.quantity==0"
+            (click)="upadteTotalPrice(prd.price,itemCount.value)">Buy</button></td>
       </tr>
     </ng-container>
   </tbody>

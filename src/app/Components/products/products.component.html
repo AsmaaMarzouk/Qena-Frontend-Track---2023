@@ -1,3 +1,8 @@
+<!-- Day5 -->
+<!-- Test date pipe -->
+<h1>Today Date : {{todayDate | date: 'longDate'}}</h1>
+
+
 <table class="table m-2">
   <thead>
     <tr class="bg-dark text-light">
@@ -5,7 +10,9 @@
       <th scope="col">Name</th>
       <th scope="col">Image</th>
       <th scope="col">Quantity</th>
-      <th scope="col">Price</th>
+      <!-- Day5 -->
+      <th scope="col">Price in USD</th>
+      <th scope="col">Price in EGP</th>
       <th scope="col">Details</th>
       <th>Count</th>
       <th>Buy</th>
@@ -41,8 +48,9 @@
         [ngStyle]="{'background-color':(prd.quantity==0)?'lightyellow':'lightgray','color':(prd.quantity==0)?'red':'blue'}">
         <!-- <td>{{prd.id}}</td> -->
         <td>{{i+1}}</td>
-        <td>{{prd.name}}</td>
-        <td><img [src]="prd.imgURL" width="200" height="150"></td>
+        <td>{{prd.name | uppercase}}</td>
+        <!-- <td><img [src]="prd.imgURL" width="200" height="150" BorderBox borderColor="blueviolet"></td> -->
+        <td><img [src]="prd.imgURL" width="200" height="150" BorderBox="orange" borderColor="blueviolet"></td>
         <!-- <td>{{prd.quantity}}</td> -->
         <td>
           <!-- <span *ngIf="prd.quantity>0">{{prd.quantity}}</span>
@@ -64,7 +72,11 @@
             <ng-container *ngSwitchDefault>{{prd.quantity}}</ng-container>
           </ng-container>
         </td>
-        <td>{{prd.price}}</td>
+        <!-- Day5 -->
+        <!-- code || symbol  -->
+        <!-- <td>{{prd.price | currency: 'USD':'code'}}</td> -->
+        <td>{{prd.price | currency: 'USD':'symbol'}}</td>
+        <td>{{prd.price | usdToEgp:33 | currency:'EGP'}}</td>
         <!-- <td><button class="btn btn-success" [hidden]="prd.quantity==0">Buy</button></td> -->
 
 

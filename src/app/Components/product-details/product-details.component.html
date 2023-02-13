@@ -5,4 +5,18 @@
     <h6 class="card-text">Price: {{prd?.price}}</h6>
     <h6 class="card-text">Quantity: {{prd?.quantity}}</h6>
   </div>
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <!-- <button class="btn btn-success" (click)="goPrevFunc()" [disabled]="currentIndex==0">Previous</button> -->
+    <button class="btn btn-success" (click)="goPrevFunc()" [disabled]="currentProductID==productsIDList[0]">Previous</button>
+    <button class="btn btn-warning" (click)="goNextFunc()" [disabled]="currentProductID==productsIDList[productsIDList.length-1]">Next</button>
+  </div>
+</div>
+
+
+
+<div>
+  <label for="">Search Product By Name: </label>
+  <input type="text" class="form-control" id="name" name="name" #prdName>
+  <button class="btn btn-info" (click)="searchProduct(prdName.value)">Search</button>
 </div>

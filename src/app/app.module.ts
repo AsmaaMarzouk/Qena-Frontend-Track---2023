@@ -13,6 +13,8 @@ import { OrderParentComponent } from './Components/order-parent/order-parent.com
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { MainLayoutComponent } from './Components/main-layout/main-layout.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { BorderBoxDirective } from './Directives/border-box.directive';
+import { UsdToEgpPipe } from './Pipes/usd-to-egp.pipe';
 // class decorator
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
     OrderParentComponent,
     NotFoundComponent,
     MainLayoutComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    BorderBoxDirective,
+    UsdToEgpPipe
   ],
   imports: [
     BrowserModule,

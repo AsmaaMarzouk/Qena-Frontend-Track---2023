@@ -23,6 +23,10 @@ orderTotalPrice:number=0;
 // declare event
 @Output() totalPriceChanged:EventEmitter<number>;
 
+
+
+// Day5
+todayDate:Date = new Date();
 // Day4
 // inject service
 constructor(private prdService:ProductService,private router:Router){

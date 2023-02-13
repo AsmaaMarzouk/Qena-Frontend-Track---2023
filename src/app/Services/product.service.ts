@@ -42,5 +42,13 @@ export class ProductService {
 
   }
 
+  // Day5
+   getPrdIDList():number[]{
+    return this.prdList.map(prd=>prd.id);
 
+   }
+
+   searchProductByName(prdName:string):Iproduct|undefined{
+    return this.prdList.find(prd => prd.name==prdName);
+   }
 }

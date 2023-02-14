@@ -6,3 +6,4 @@ export interface Iproduct {
     catID:number;
     imgURL?:string;
 }
+

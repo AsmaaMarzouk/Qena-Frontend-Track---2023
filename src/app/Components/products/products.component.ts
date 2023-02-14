@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { Router } from '@angular/router';
 import { Iproduct } from 'src/app/Models/iproduct';
 import { ProductService } from 'src/app/Services/product.service';
+import { ProductsApiService } from 'src/app/Services/products-api.service';
 
 @Component({
   selector: 'app-products',
@@ -29,7 +30,7 @@ orderTotalPrice:number=0;
 todayDate:Date = new Date();
 // Day4
 // inject service
-constructor(private prdService:ProductService,private router:Router){
+constructor(private prdService:ProductService,private router:Router,private prdAPIService:ProductsApiService){
   // create object event emitter
   this.totalPriceChanged= new EventEmitter<number>();
 
@@ -47,16 +48,32 @@ constructor(private prdService:ProductService,private router:Router){
     // Day3
     // this.getProductsOfCatID();
     // Day4
-   this.prdListOfCat = this.prdService.getProductsByCatID(this.receivedCatID);
-    
+  //  this.prdListOfCat = this.prdService.getProductsByCatID(this.receivedCatID);
+
+  // Day6
+
+  if(this.receivedCatID==0){
+    this.prdAPIService.getAllProducts().subscribe(data1=>{
+      this.prdListOfCat=data1;
+    })
+  }
+  else{
+  this.prdAPIService.getProductsByCatID(this.receivedCatID).subscribe(data=>{
+    this.prdListOfCat=data;
+  })
+}
   }
 // case1
   ngOnInit(): void {
     // Day3
   //   this.getProductsOfCatID();
   // Day4
-  this.prdListOfCat = this.prdService.getProductsByCatID(this.receivedCatID);
+  // this.prdListOfCat = this.prdService.getProductsByCatID(this.receivedCatID);
 
+  // Day6
+  this.prdAPIService.getAllProducts().subscribe(data1=>{
+    this.prdListOfCat=data1;
+  })
   }
 
 // Day3

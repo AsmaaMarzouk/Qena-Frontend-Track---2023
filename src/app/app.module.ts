@@ -15,6 +15,9 @@ import { MainLayoutComponent } from './Components/main-layout/main-layout.compon
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { BorderBoxDirective } from './Directives/border-box.directive';
 import { UsdToEgpPipe } from './Pipes/usd-to-egp.pipe';
+import { HttpClientModule } from '@angular/common/http';
+import { AddNewProductComponent } from './Components/Admin/add-new-product/add-new-product.component';
+
 // class decorator
 @NgModule({
   declarations: [
@@ -29,12 +32,14 @@ import { UsdToEgpPipe } from './Pipes/usd-to-egp.pipe';
     MainLayoutComponent,
     ProductDetailsComponent,
     BorderBoxDirective,
-    UsdToEgpPipe
+    UsdToEgpPipe,
+    AddNewProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

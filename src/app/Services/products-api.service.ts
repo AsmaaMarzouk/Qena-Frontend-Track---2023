@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, retry, throwError } from 'rxjs';
 import { environment } from 'src/environments/environments';
 import { Iproduct } from '../Models/iproduct';
 
@@ -37,7 +37,12 @@ export class ProductsApiService {
 
   // post method
   addProduct(newProduct:Iproduct):Observable<Iproduct>{
-    return this.httpClient.post<Iproduct>(`${environment.APIBaseURL}/products`,JSON.stringify(newProduct),this.httpOptions);
+    return this.httpClient.post<Iproduct>(`${environment.APIBaseURL}/products`,JSON.stringify(newProduct),this.httpOptions).pipe(retry(3),catchError((err)=>{
+      return throwError(()=>{
+        // return new Error(err.message);
+        return new Error('Error with send to server');
+      })
+    }));
   }
 
 

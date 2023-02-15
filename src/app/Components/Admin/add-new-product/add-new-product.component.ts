@@ -27,11 +27,26 @@ export class AddNewProductComponent {
         
     //   })
 
-    this.prdAPIService.addProduct(this.newPrd).subscribe(data=>{
+    this.prdAPIService.addProduct(this.newPrd).subscribe(
+    //   data=>{
+    //   console.log(data);
+    //   this.router.navigate(['/Products']);
+      
+    // }
+    {
+      next:(data)=>{
       console.log(data);
       this.router.navigate(['/Products']);
+
+      },
+      error:(err)=>{
+        alert(err.message);
+
+      }
       
-    })
+
+    }
+    )
     
   }
 }

@@ -15,6 +15,24 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/Order" routerLinkActive="active">Orders</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/userregister" routerLinkActive="active" [hidden]="userLogged">Register</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Login" routerLinkActive="active" [hidden]="userLogged">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Logout" routerLinkActive="active" [hidden]="!userLogged">Logout</a>
+          </li>
+
+          <!-- Lazy loading -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/User/UserProfile" routerLinkActive="active" [hidden]="!userLogged">User Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/User/EditProfile" routerLinkActive="active" [hidden]="!userLogged">Edit Profile</a>
+          </li>
         </ul>
       </div>
     </div>

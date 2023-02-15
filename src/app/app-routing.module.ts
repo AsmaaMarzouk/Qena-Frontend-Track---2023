@@ -7,6 +7,9 @@ import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { OrderParentComponent } from './Components/order-parent/order-parent.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { ProductsComponent } from './Components/products/products.component';
+import { UserLoginComponent } from './Components/user-login/user-login.component';
+import { UserRegisterComponent } from './Components/user-register/user-register.component';
+import { AuthGuard } from './Guards/auth.guard';
 
 // array of objects => pathes
 // first match wins
@@ -35,9 +38,16 @@ const routes: Routes = [
     {path:'Home',component: HomeComponent},
     {path:'Products',component: ProductsComponent},
     {path:'Products/:pid',component: ProductDetailsComponent},
-    {path:'Order',component: OrderParentComponent},
-    {path:'NewProduct',component: AddNewProductComponent}
+    {path:'Order',component: OrderParentComponent,canActivate:[AuthGuard]},
+    {path:'NewProduct',component: AddNewProductComponent,canActivate:[AuthGuard]},
+    {
+      path: 'User', 
+      loadChildren: () => import('src/app/Components/user/user.module').then(m => m.UserModule)
+    },
   ]},
+  {path:'userregister',component: UserRegisterComponent},
+  {path:'Login',component: UserLoginComponent},
+  {path:'Logout',component: UserLoginComponent},
   {path:'**',component: NotFoundComponent},//wildcard path 
 ];
 @NgModule({
